@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product - Prizm Lights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+    <div class="staff-container">
+        <header class="staff-header">
+            <div>
+                <h1 id="pageTitle">Add New Product</h1>
+                <nav class="staff-nav">
+                    <a href="staff-dashboard.html">Dashboard</a>
+                    <a href="staff-categories.html">Categories</a>
+                    <a href="#" id="navCategoryName">Category</a>
+                    <a href="#" class="active" id="navActionName">Add New Product</a>
+                </nav>
+            </div>
+            <button id="deleteBtn" onclick="deleteProduct()" class="btn-danger" style="display:none;">Delete Product</button>
+        </header>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <div id="categoryDisplay" style="margin-bottom: 1.5rem; padding: 1rem; background-color: var(--background); border: 1px solid var(--border); border-radius: 4px;">
+                <span style="color: var(--secondary-text); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Category</span>
+                <div id="categoryNameDisplay" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--primary-text); margin-top: 0.25rem;">Loading...</div>
+            </div>
+
+            <form id="productForm">
+                <h3 style="margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Basic Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <label for="category_id">Category</label>
+                        <select id="category_id" class="form-control" required></select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" rows="4"></textarea>
+                </div>
+
+                <h3 style="margin-bottom: 1rem; margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Technical Specifications</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="dimensions">Dimensions</label>
+                        <input type="text" id="dimensions" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material</label>
+                        <input type="text" id="material" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="light_type">Light Type (e.g. LED, E27)</label>
+                        <input type="text" id="light_type" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="colour">Colour/Finish</label>
+                        <input type="text" id="colour" class="form-control">
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 1rem; margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Status</h3>
+                <div class="form-group" style="flex-direction: row; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="is_active" checked style="width: auto;">
+                    <label for="is_active" style="margin: 0;">Active (Visible on website)</label>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <button type="button" onclick="saveProduct()" class="btn-primary">Save Product</button>
+                    <a href="javascript:history.back()" class="btn-secondary" style="margin-left: 1rem;">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Images Section (Only visible when editing existing product) -->
+        <div class="card" id="imageSection" style="display:none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h2>Product Images</h2>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="file" id="imageUpload" accept="image/*" class="form-control" style="width: auto;">
+                    <button onclick="uploadImage()" class="btn-secondary">Upload Image</button>
+                </div>
+            </div>
+            
+            <div class="image-grid" id="imageGrid">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+
+    </div>
+    <div id="toast"></div>
+    <script src="staff.js?v=4"></script>
+    <script>
+        checkAuth();
+        initProductEdit();
+    </script>
+</body>
+</html>

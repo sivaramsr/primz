@@ -1,0 +1,553 @@
+const products = [
+  // --- WALL LIGHTS (28 Local Products) ---
+  {
+    id: "wall-light-w01",
+    name: "Aero Slim Wall Light",
+    category: "WALL LIGHTS",
+    description: "A sleek, ultra-minimalist vertical tube sconce designed to cast a subtle, glare-free wash of warm ambient light.",
+    image: "Products/Wall Lights/w01.jpeg",
+    specs: {
+      "Dimensions": "W 6cm x H 40cm",
+      "Material": "Brushed Aluminum & Acrylic",
+      "Light Type": "Integrated LED (3000K)",
+      "Colour": "Satin Brass",
+    }
+  },
+  {
+    id: "wall-light-w02",
+    name: "Aura Curved Sconce",
+    category: "WALL LIGHTS",
+    description: "A circular metallic accent lamp featuring a curved diffuser that projects soft, indirect ambient glows on walls.",
+    image: "Products/Wall Lights/w02.jpeg",
+    specs: {
+      "Dimensions": "Ø 22cm x D 8cm",
+      "Material": "Spun Steel & Polycarbonate",
+      "Light Type": "Dimmable LED (2700K)",
+      "Colour": "Matte Black & Gold",
+    }
+  },
+  {
+    id: "wall-light-w03",
+    name: "Deco Cylinder Uplight",
+    category: "WALL LIGHTS",
+    description: "A classic brass pillar sconce that directs light upwards, highlighting wall textures and ceiling heights.",
+    image: "Products/Wall Lights/w03.jpeg",
+    specs: {
+      "Dimensions": "W 8cm x H 30cm",
+      "Material": "Solid Brass & Frosted Glass",
+      "Light Type": "G9 LED Bulb (3000K)",
+      "Colour": "Brushed Brass",
+    }
+  },
+  {
+    id: "wall-light-w04",
+    name: "Eclipse Radial Sconce",
+    category: "WALL LIGHTS",
+    description: "A backlit glowing disc that floats off the wall, generating a dramatic eclipse-like halo effect.",
+    image: "Products/Wall Lights/w04.jpeg",
+    specs: {
+      "Dimensions": "Ø 28cm x D 5cm",
+      "Material": "Steel & LED Array",
+      "Light Type": "Warm White LED (2700K)",
+      "Colour": "Textured Charcoal",
+    }
+  },
+  {
+    id: "wall-light-w05",
+    name: "Zenith Gold Pillar Sconce",
+    category: "WALL LIGHTS",
+    description: "A modern luxury wall fixture with vertical golden slats that fragment light into beautiful parallel beams.",
+    image: "Products/Wall Lights/w05.jpeg",
+    specs: {
+      "Dimensions": "W 10cm x H 45cm",
+      "Material": "Stainless Steel & Glass",
+      "Light Type": "E14 LED Bulb (3000K)",
+      "Colour": "Polished Gold",
+    }
+  },
+  {
+    id: "wall-light-w06",
+    name: "Linear Profile Sconce",
+    category: "WALL LIGHTS",
+    description: "A slim architectural wall profile providing continuous, seamless uplight and downlight wash.",
+    image: "Products/Wall Lights/w06.jpeg",
+    specs: {
+      "Dimensions": "L 60cm x W 4cm x D 6cm",
+      "Material": "Extruded Aluminum",
+      "Light Type": "High-CRI LED (3000K)",
+      "Colour": "Anodized Black",
+    }
+  },
+  {
+    id: "wall-light-w07",
+    name: "Classic Candle Sconce",
+    category: "WALL LIGHTS",
+    description: "A nostalgic candle-style brass wall fixture, perfect for classic and transition-themed interiors.",
+    image: "Products/Wall Lights/w07.jpeg",
+    specs: {
+      "Dimensions": "W 12cm x H 35cm",
+      "Material": "Forged Brass",
+      "Light Type": "E14 Candle LED (2700K)",
+      "Colour": "Antiqued Brass",
+    }
+  },
+  {
+    id: "wall-light-w08",
+    name: "Vellum Diffused Sconce",
+    category: "WALL LIGHTS",
+    description: "A frosted glass tube sconce wrapped in brass bands, casting a soft, fully diffused uniform glow.",
+    image: "Products/Wall Lights/w08.jpeg",
+    specs: {
+      "Dimensions": "Ø 8cm x H 38cm",
+      "Material": "Opal Glass & Brass",
+      "Light Type": "T8 LED Tube (3000K)",
+      "Colour": "Opal White & Brass",
+    }
+  },
+  {
+    id: "wall-light-w09",
+    name: "K9 Luxe Crystal Sconce",
+    category: "WALL LIGHTS",
+    description: "A luxury sconce styled with precision-cut K9 crystals that refract light into dazzling diamond patterns.",
+    image: "Products/Wall Lights/w09.jpeg",
+    specs: {
+      "Dimensions": "W 18cm x H 32cm",
+      "Material": "K9 Crystal & Steel",
+      "Light Type": "E14 LED Bulbs (3000K)",
+      "Colour": "Polished Chrome",
+    }
+  },
+  {
+    id: "wall-light-w10",
+    name: "Opal Glass Ball Sconce",
+    category: "WALL LIGHTS",
+    description: "An elegant frosted opaline glass sphere suspended from a minimalist brass support bracket.",
+    image: "Products/Wall Lights/w10.jpeg",
+    specs: {
+      "Dimensions": "W 15cm x H 28cm",
+      "Material": "Opal Glass & Steel",
+      "Light Type": "G9 LED Bulb (2700K)",
+      "Colour": "Satin Gold & White",
+    }
+  },
+  {
+    id: "wall-light-w11",
+    name: "Minimalist Wood Block Sconce",
+    category: "WALL LIGHTS",
+    description: "A warm walnut wood block fixture with recessed LED accents, adding organic charm to cozy corners.",
+    image: "Products/Wall Lights/w11.jpeg",
+    specs: {
+      "Dimensions": "W 10cm x H 20cm",
+      "Material": "Solid Walnut & Acrylic",
+      "Light Type": "Warm LED (2700K)",
+      "Colour": "Natural Walnut",
+    }
+  },
+  {
+    id: "wall-light-w12",
+    name: "Industrial Metal Cage Sconce",
+    category: "WALL LIGHTS",
+    description: "A wireframe iron cage sconce housing an Edison filament bulb, perfect for industrial and loft spaces.",
+    image: "Products/Wall Lights/w12.jpeg",
+    specs: {
+      "Dimensions": "W 14cm x H 28cm",
+      "Material": "Powder-coated Iron",
+      "Light Type": "E27 Edison LED (2200K)",
+      "Colour": "Matte Black",
+    }
+  },
+  {
+    id: "wall-light-w13",
+    name: "Solis Dual Uplight-Downlight",
+    category: "WALL LIGHTS",
+    description: "A cylindrical sconce casting distinct geometric light cones upwards and downwards simultaneously.",
+    image: "Products/Wall Lights/w13.jpeg",
+    specs: {
+      "Dimensions": "W 9cm x H 22cm",
+      "Material": "Aluminum & Tempered Glass",
+      "Light Type": "GU10 LED Bulbs (3000K)",
+      "Colour": "Sanded Silver",
+    }
+  },
+  {
+    id: "wall-light-w14",
+    name: "Geometric Cube Sconce",
+    category: "WALL LIGHTS",
+    description: "A compact cubical brass sconce with internal adjustable flaps to control the direction and spread of light beams.",
+    image: "Products/Wall Lights/w14.jpeg",
+    specs: {
+      "Dimensions": "W 10cm x H 10cm x D 10cm",
+      "Material": "Extruded Aluminum",
+      "Light Type": "Integrated COB LED (3000K)",
+      "Colour": "Champagne Brass",
+    }
+  },
+  {
+    id: "wall-light-w15",
+    name: "Orbit Spherical Sconce",
+    category: "WALL LIGHTS",
+    description: "A rotatable metallic ring holding a warm glowing glass sphere, allowing you to position the light source as desired.",
+    image: "Products/Wall Lights/w15.jpeg",
+    specs: {
+      "Dimensions": "Ø 25cm x D 12cm",
+      "Material": "Steel & Glass Globe",
+      "Light Type": "G9 LED (3000K)",
+      "Colour": "Polished Brass",
+    }
+  },
+  {
+    id: "wall-light-w16",
+    name: "Art Deco Shell Sconce",
+    category: "WALL LIGHTS",
+    description: "An elegant fan-shaped brass shell sconce reflecting soft, warm, indirect highlights against walls.",
+    image: "Products/Wall Lights/w16.jpeg",
+    specs: {
+      "Dimensions": "W 24cm x H 20cm",
+      "Material": "Satin Brushed Brass",
+      "Light Type": "Warm LED Array (2700K)",
+      "Colour": "Golden Brass",
+    }
+  },
+  {
+    id: "wall-light-w17",
+    name: "Fluted Glass Sconce",
+    category: "WALL LIGHTS",
+    description: "A fluted glass cylinder sconce with chrome trim, diffusing light into beautiful vertical rib patterns.",
+    image: "Products/Wall Lights/w17.jpeg",
+    specs: {
+      "Dimensions": "W 8cm x H 35cm",
+      "Material": "Ribbed Glass & Steel",
+      "Light Type": "E14 LED Candle (3000K)",
+      "Colour": "Clear Glass & Chrome",
+    }
+  },
+  {
+    id: "wall-light-w18",
+    name: "Vintage Swing-Arm Sconce",
+    category: "WALL LIGHTS",
+    description: "An adjustable swing-arm wall light with a conical shade, ideal for bedside reading or study desks.",
+    image: "Products/Wall Lights/w18.jpeg",
+    specs: {
+      "Dimensions": "Arm Extension Max 45cm",
+      "Material": "Steel & Brass Joints",
+      "Light Type": "E27 LED Bulb (2700K)",
+      "Colour": "Antique Brass & Black shade",
+    }
+  },
+  {
+    id: "wall-light-w19",
+    name: "Alabaster Stone Sconce",
+    category: "WALL LIGHTS",
+    description: "A natural translucent alabaster stone panel that glows from within, highlighting organic marble textures.",
+    image: "Products/Wall Lights/w19.jpeg",
+    specs: {
+      "Dimensions": "W 15cm x H 30cm",
+      "Material": "Natural Spanish Alabaster & Brass",
+      "Light Type": "Warm Backlit LED (2700K)",
+      "Colour": "White Veined Alabaster",
+    }
+  },
+  {
+    id: "wall-light-w20",
+    name: "Helix Ribbon Sconce",
+    category: "WALL LIGHTS",
+    description: "A sculptural twisted chrome ribbon holding an integrated LED strip, creating dynamic modern lighting art.",
+    image: "Products/Wall Lights/w20.jpeg",
+    specs: {
+      "Dimensions": "W 12cm x H 50cm",
+      "Material": "Stainless Steel & Silicone",
+      "Light Type": "Flexible LED Strip (3000K)",
+      "Colour": "Polished Chrome",
+    }
+  },
+  {
+    id: "wall-light-w21",
+    name: "Lumina Slim Profile",
+    category: "WALL LIGHTS",
+    description: "An ultra-thin linear sconce that mounts flush to the wall, generating clean architectural border accents.",
+    image: "Products/Wall Lights/w21.jpeg",
+    specs: {
+      "Dimensions": "L 80cm x W 3cm x D 4cm",
+      "Material": "Extruded Aluminum & PMMA",
+      "Light Type": "Integrated LED (3000K)",
+      "Colour": "Satin Brass",
+    }
+  },
+  {
+    id: "wall-light-w22",
+    name: "Nordic Ceramic Sconce",
+    category: "WALL LIGHTS",
+    description: "A textured matte ceramic shell sconce casting warm uplight, blending seamlessly into plaster finishes.",
+    image: "Products/Wall Lights/w22.jpeg",
+    specs: {
+      "Dimensions": "W 20cm x H 15cm",
+      "Material": "Terracotta/Ceramic Clay",
+      "Light Type": "G9 LED Bulb (2700K)",
+      "Colour": "Matte Off-White",
+    }
+  },
+  {
+    id: "wall-light-w23",
+    name: "Torch Amber Sconce",
+    category: "WALL LIGHTS",
+    description: "A simulated torch flame light with amber glass, providing an incredibly cozy, hearth-like glow.",
+    image: "Products/Wall Lights/w23.jpeg",
+    specs: {
+      "Dimensions": "W 10cm x H 40cm",
+      "Material": "Steel & Amber Bubble Glass",
+      "Light Type": "Warm Flicker LED (2200K)",
+      "Colour": "Aged Copper & Amber",
+    }
+  },
+  {
+    id: "wall-light-w24",
+    name: "Cascade Crystal Sconce",
+    category: "WALL LIGHTS",
+    description: "A waterfall design of tiered crystals hanging from a chrome plate, catching and multiplying light rays.",
+    image: "Products/Wall Lights/w24.jpeg",
+    specs: {
+      "Dimensions": "W 25cm x H 50cm",
+      "Material": "K9 Crystal droplets & Steel",
+      "Light Type": "E14 LED Bulbs (3000K)",
+      "Colour": "Clear Crystal & Chrome",
+    }
+  },
+  {
+    id: "wall-light-w25",
+    name: "Wave Contour Sconce",
+    category: "WALL LIGHTS",
+    description: "A curved metal plate sconce mimicking ocean waves, diffusing soft light from behind its contours.",
+    image: "Products/Wall Lights/w25.jpeg",
+    specs: {
+      "Dimensions": "W 18cm x H 30cm",
+      "Material": "Steel sheet & Acrylic",
+      "Light Type": "Integrated LED (3000K)",
+      "Colour": "Satin Nickel",
+    }
+  },
+  {
+    id: "wall-light-w26",
+    name: "Minimal Tube Sconce",
+    category: "WALL LIGHTS",
+    description: "A clean T-style wall sconce with a cylindrical frosted diffuser, ideal for corridors and modern stairwells.",
+    image: "Products/Wall Lights/w26.jpeg",
+    specs: {
+      "Dimensions": "W 8cm x H 25cm",
+      "Material": "Brass & Sandblasted Glass",
+      "Light Type": "E14 LED Bulb (3000K)",
+      "Colour": "Matte Black & Gold trim",
+    }
+  },
+  {
+    id: "wall-light-w27",
+    name: "Stella Hexagonal Sconce",
+    category: "WALL LIGHTS",
+    description: "A geometric hexagonal gold frame sconce casting multi-directional accents across adjacent walls.",
+    image: "Products/Wall Lights/w27.jpeg",
+    specs: {
+      "Dimensions": "W 22cm x H 20cm",
+      "Material": "Steel & Opal Glass diffuser",
+      "Light Type": "G9 LED (2700K)",
+      "Colour": "Champagne Gold",
+    }
+  },
+  {
+    id: "wall-light-w28",
+    name: "Prism Double Sconce",
+    category: "WALL LIGHTS",
+    description: "A triangular glass prism wall sconce projecting structured vertical light cones upwards and downwards.",
+    image: "Products/Wall Lights/w28.jpeg",
+    specs: {
+      "Dimensions": "W 10cm x H 28cm",
+      "Material": "Thick Faceted Glass & Brass",
+      "Light Type": "GU10 LED Bulbs (3000K)",
+      "Colour": "Clear Glass & Brushed Brass",
+    }
+  },
+
+  // --- HANGING LIGHTS ---
+  {
+    id: "aura-pendant",
+    name: "Aura Pendant Light",
+    category: "HANGING LIGHTS",
+    description: "A contemporary pendant light designed to add a warm and elegant character to modern interiors.",
+    image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 40cm x H 50cm",
+      "Material": "Brushed Brass & Opal Glass",
+      "Light Type": "Warm LED (3000K)",
+      "Colour": "Satin Brass",
+    }
+  },
+  {
+    id: "vertex-led",
+    name: "Vertex LED Pendant",
+    category: "HANGING LIGHTS",
+    description: "A slim, linear LED pendant designed for task lighting over conference tables, kitchen islands, or modern workspaces.",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "L 120cm x W 5cm x H 8cm",
+      "Material": "Extruded Aluminum & Polycarbonate",
+      "Light Type": "High-Efficiency LED (4000K)",
+      "Colour": "Anodized Black",
+    }
+  },
+  {
+    id: "orion-pendant",
+    name: "Orion Linear Pendant",
+    category: "HANGING LIGHTS",
+    description: "A striking minimalist horizontal tube light, suspended by ultra-thin cables for a floating, lightweight aesthetic.",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "L 150cm x Ø 4cm, Drop Max 120cm",
+      "Material": "Brass & Frosted Glass Tube",
+      "Light Type": "Uniform Linear LED (3000K)",
+      "Colour": "Brushed Brass",
+    }
+  },
+
+  // --- CELING LIGHTS ---
+  {
+    id: "nova-ceiling",
+    name: "Nova Ceiling Light",
+    category: "CELING LIGHTS",
+    description: "A statement flush-mount fixture projecting soft geometric patterns of illumination across spacious rooms.",
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 60cm x H 15cm",
+      "Material": "Anodized Aluminum & Acrylic",
+      "Light Type": "Dimmable LED (2700K - 4000K)",
+      "Colour": "Matte Charcoal & Champagne Gold",
+    }
+  },
+  {
+    id: "zenith-ceiling",
+    name: "Zenith Ceiling Lamp",
+    category: "CELING LIGHTS",
+    description: "A low-profile architectural ceiling mount that offers uniform, glare-free ambient light with advanced dimming options.",
+    image: "https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 50cm x H 10cm",
+      "Material": "Aluminum & Diffused Glass",
+      "Light Type": "Warm Dim LED (2200K - 3000K)",
+      "Colour": "Satin White & Brass Accent",
+    }
+  },
+  {
+    id: "luxe-flush",
+    name: "Luxe Flush Mount",
+    category: "CELING LIGHTS",
+    description: "A premium glass ceiling light featuring an intricate ripple texture that creates soft, ambient shadows.",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 35cm x H 12cm",
+      "Material": "Rippled Glass & Brass Trim",
+      "Light Type": "Warm E27 LED (2700K)",
+      "Colour": "Clear Glass & Brass",
+    }
+  },
+
+  // --- GATE LIGHTS ---
+  {
+    id: "horizon-path",
+    name: "Horizon Path Light",
+    category: "GATE LIGHTS",
+    description: "A robust IP67 ground path light designed to provide guidance along outdoor walkways, gardens, and patios.",
+    image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "W 8cm x H 60cm",
+      "Material": "Heavy-Duty Brass & Acrylic",
+      "Light Type": "Low-Voltage LED (3000K)",
+      "Colour": "Antique Brass",
+    }
+  },
+
+  // --- MIRROR LIGHTS ---
+  {
+    id: "crystal-arc",
+    name: "Crystal Arc Sconce",
+    category: "MIRROR LIGHTS",
+    description: "A luxurious wall sconce with precision-cut crystals that scatter light to produce beautiful patterns on surrounding surfaces.",
+    image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "W 20cm x H 45cm",
+      "Material": "K9 Crystal & Stainless Steel",
+      "Light Type": "E14 LED Bulbs (3000K)",
+      "Colour": "Chrome & Clear Crystal",
+    }
+  },
+
+  // --- HIGH CELING LIGHTS ---
+  {
+    id: "halo-chandelier",
+    name: "Halo Chandelier",
+    category: "HIGH CELING LIGHTS",
+    description: "An elegant nested double-ring chandelier that creates a stunning focal point in dining areas or high-ceiling lobbies.",
+    image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 80cm + Ø 60cm, Drop Max 150cm",
+      "Material": "Stainless Steel & Crystal Profile",
+      "Light Type": "High-Density LED (3000K)",
+      "Colour": "Champagne Gold",
+    }
+  },
+  {
+    id: "stellar-chandelier",
+    name: "Stellar Ring Chandelier",
+    category: "HIGH CELING LIGHTS",
+    description: "A grand circular statement piece comprising custom hand-blown glass globes mounted on a finished metal frame.",
+    image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Ø 100cm x H 80cm, Drop Max 200cm",
+      "Material": "Steel & Hand-blown Clear Glass",
+      "Light Type": "G4 LED Bulbs (2700K)",
+      "Colour": "Satin Brass & Clear Glass",
+    }
+  },
+
+  // --- OUTDOOR LIGHTS ---
+  {
+    id: "solis-outdoor",
+    name: "Solis Outdoor Sconce",
+    category: "OUTDOOR LIGHTS",
+    description: "A weather-resistant exterior wall light providing bi-directional glow, highlighting stone or stucco textures.",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "W 15cm x H 25cm x D 10cm",
+      "Material": "Powder-coated Aluminum",
+      "Light Type": "IP65 Outdoor LED (3000K)",
+      "Colour": "Textured Black",
+    }
+  },
+
+  // --- ALL COMMERCIAL LIGHTS ---
+  {
+    id: "prism-table",
+    name: "Prism Table Lamp",
+    category: "ALL COMMERCIAL LIGHTS",
+    description: "A beautifully sculpted designer desk lamp that combines geometric angles with cozy task and ambient lighting.",
+    image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "W 22cm x H 48cm",
+      "Material": "Iron & Brass Joints",
+      "Light Type": "E27 LED Bulb (2700K)",
+      "Colour": "Matte Black & Raw Brass",
+    }
+  },
+  {
+    id: "apex-led",
+    name: "Apex LED Profile",
+    category: "ALL COMMERCIAL LIGHTS",
+    description: "High-density flexible LED strip system housed in a custom recess profile, providing continuous seamless accent glow.",
+    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
+    specs: {
+      "Dimensions": "Length Custom (up to 5m)",
+      "Material": "Aluminum Channel & Silicone Diffuser",
+      "Light Type": "High-CRI LED (3000K/4000K)",
+      "Colour": "Silver Profile",
+    }
+  }
+];
+
+// Attach to window for global access in scripts
+window.PRIZM_PRODUCTS = products;

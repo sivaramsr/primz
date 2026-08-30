@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Dashboard - Prizm Lights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+    <div class="staff-container">
+        <header class="staff-header">
+            <div>
+                <h1>Dashboard</h1>
+                <nav class="staff-nav">
+                    <a href="staff-dashboard.html" class="active">Dashboard</a>
+                    <a href="staff-categories.html">Categories</a>
+                </nav>
+            </div>
+            <button onclick="logout()" class="btn-secondary">Logout</button>
+        </header>
+
+        <div class="grid-4" id="statsContainer">
+            <!-- Stats loaded via JS -->
+        </div>
+
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Recently Added</h2>
+                <a href="staff-categories.html" class="btn-secondary">View All</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="recentProductsTable">
+                    <!-- Populated via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script src="staff.js?v=4"></script>
+    <script>
+        checkAuth();
+        loadDashboard();
+    </script>
+</body>
+</html>

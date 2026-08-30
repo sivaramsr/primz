@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Products - Prizm Lights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+    <div class="staff-container">
+        <header class="staff-header">
+            <div>
+                <h1 id="pageTitle">Products</h1>
+                <nav class="staff-nav">
+                    <a href="staff-dashboard.html">Dashboard</a>
+                    <a href="staff-categories.html">Categories</a>
+                    <a href="#" class="active" id="navCategoryName">Products</a>
+                </nav>
+            </div>
+            <a href="staff-product-edit.html" class="btn-primary" id="addProductBtn">+ Add New Product</a>
+        </header>
+
+        <div style="display: flex; gap: 2rem; align-items: flex-start;">
+            <aside style="width: 250px; flex-shrink: 0;">
+                <div class="card" style="padding: 1rem;">
+                    <h3 style="margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 1px;">Categories</h3>
+                    <ul id="categorySidebar" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Populated via JS -->
+                    </ul>
+                </div>
+            </aside>
+            
+            <main style="flex: 1;">
+                <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <p style="color: var(--secondary-text);" id="productCountLabel">Loading...</p>
+                </div>
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script src="staff.js?v=4"></script>
+    <script>
+        checkAuth();
+        loadProducts();
+    </script>
+</body>
+</html>
