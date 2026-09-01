@@ -131,8 +131,14 @@ function injectDetailModal() {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
-/* --- 2. LOADING SCREEN --- */
+/* --- 2. LOADING SCREEN (HOME PAGE ONLY) --- */
+function isHomePage() {
+  const path = window.location.pathname;
+  return path.endsWith('/') || path.endsWith('/index.html') || path.endsWith('/primz') || path.endsWith('/primz/');
+}
+
 function injectLoadingScreen() {
+  if (!isHomePage()) return;
   if (document.getElementById('loading-screen')) return;
   const loaderHTML = `
     <div id="loading-screen">
@@ -170,6 +176,12 @@ function injectLoadingScreen() {
 function initLoadingScreen() {
   const loader = document.getElementById('loading-screen');
   if (!loader) return;
+
+  if (!isHomePage()) {
+    loader.style.display = 'none';
+    document.body.style.overflow = '';
+    return;
+  }
 
   // Show for 2.6 seconds, then fade out
   setTimeout(() => {
