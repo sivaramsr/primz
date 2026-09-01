@@ -86,6 +86,29 @@ class Command(BaseCommand):
                         failed_count += 1
                         continue
 
+                    specs = {
+                        'dimensions': 'Standard Dimensions',
+                        'material': 'Premium Alloy & Glass',
+                        'light_type': 'Warm LED (3000K)',
+                        'colour': 'As Shown',
+                    }
+                    if cat_slug in ['gate-lights']:
+                        specs = {'dimensions': 'W 20cm x H 40cm', 'material': 'Weatherproof Die-Cast Aluminum', 'light_type': 'Low-Voltage Outdoor LED (3000K)', 'colour': 'Textured Black'}
+                    elif cat_slug in ['wall-lights']:
+                        specs = {'dimensions': 'W 15cm x H 30cm', 'material': 'Metal Alloy & Frosted Glass', 'light_type': 'Warm White LED (3000K)', 'colour': 'Satin Brass & Black'}
+                    elif cat_slug in ['hanging-lights']:
+                        specs = {'dimensions': 'Ø 40cm x Drop Max 120cm', 'material': 'Brushed Metal & Opal Glass', 'light_type': 'Integrated Warm LED (3000K)', 'colour': 'Gold & Clear Glass'}
+                    elif cat_slug in ['celing-lights']:
+                        specs = {'dimensions': 'Ø 50cm x H 12cm', 'material': 'Anodized Aluminum & Acrylic', 'light_type': 'Dimmable LED (3000K)', 'colour': 'Matte White & Brass'}
+                    elif cat_slug in ['led-mirror-lights', 'mirror-lights']:
+                        specs = {'dimensions': 'W 60cm x H 80cm', 'material': 'HD Silver Mirror & Stainless Steel', 'light_type': 'Dual-Tone Touch LED (3000K-6000K)', 'colour': 'Frameless / Warm Gold Trim'}
+                    elif cat_slug in ['high-celing-lights']:
+                        specs = {'dimensions': 'Ø 80cm x Drop Max 200cm', 'material': 'K9 Crystal & Stainless Steel', 'light_type': 'High-Lumen LED (3000K)', 'colour': 'Champagne Gold & Clear Crystal'}
+                    elif cat_slug in ['outdoor-lights']:
+                        specs = {'dimensions': 'W 15cm x H 25cm', 'material': 'IP65 Powder-Coated Aluminum', 'light_type': 'Outdoor Waterproof LED (3000K)', 'colour': 'Satin Black'}
+                    elif cat_slug in ['all-commercial-lights']:
+                        specs = {'dimensions': 'Custom / Profile Architectural', 'material': 'Aluminum Channel & Polycarbonate', 'light_type': 'High-CRI Commercial LED (4000K)', 'colour': 'Anodized Silver / Black'}
+
                     # Create or update Product
                     product, created = Product.objects.get_or_create(
                         slug=prod_slug,
@@ -93,6 +116,10 @@ class Command(BaseCommand):
                             'name': prod_name,
                             'category': category,
                             'description': f"Premium {prefix} fixture from Prizm Lights collection.",
+                            'dimensions': specs['dimensions'],
+                            'material': specs['material'],
+                            'light_type': specs['light_type'],
+                            'colour': specs['colour'],
                             'is_active': True,
                         }
                     )
