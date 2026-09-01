@@ -125,6 +125,12 @@ function injectDetailModal() {
             <button id="detail-enquire-btn" class="btn btn-primary">Enquire Now</button>
           </div>
         </div>
+        <div id="modal-related-container" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--primary-text); margin-bottom: 1rem;">Recommended in <span id="modal-related-cat-name" style="color: var(--brass);">this Category</span></h4>
+          <div id="modal-related-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.75rem;">
+            <!-- Mini recommended thumbnails -->
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -563,6 +569,30 @@ function openDetailModal(product) {
       specsBody.insertAdjacentHTML('beforeend', row);
     });
 
+    // Render related products in modal
+    const modalRelatedCat = document.getElementById('modal-related-cat-name');
+    const modalRelatedGrid = document.getElementById('modal-related-grid');
+    if (modalRelatedGrid && window.PRIZM_PRODUCTS) {
+      if (modalRelatedCat) modalRelatedCat.textContent = product.category;
+      const related = window.PRIZM_PRODUCTS
+        .filter(p => p.category === product.category && p.id !== product.id)
+        .slice(0, 6);
+      modalRelatedGrid.innerHTML = related.map(rel => `
+        <div class="modal-related-card" data-rel-id="${rel.id}" style="cursor: pointer; text-align: center; background: var(--background); padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border); transition: transform 0.2s;" title="${rel.name}">
+          <img src="${rel.image}" alt="${rel.name}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; margin-bottom: 0.25rem;">
+          <div style="font-size: 0.7rem; color: var(--primary-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500;">${rel.name}</div>
+        </div>
+      `).join('');
+
+      modalRelatedGrid.querySelectorAll('.modal-related-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const relId = card.getAttribute('data-rel-id');
+          const relProd = window.PRIZM_PRODUCTS.find(p => p.id === relId);
+          if (relProd) openDetailModal(relProd);
+        });
+      });
+    }
+
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -729,6 +759,18 @@ function initProductDetail() {
 
       detailForm.reset();
     });
+  }
+
+  // Populate Related Products in this Category
+  const relatedCatName = document.getElementById('related-category-name');
+  const relatedGrid = document.getElementById('related-products-grid');
+  if (relatedGrid && window.PRIZM_PRODUCTS) {
+    if (relatedCatName) relatedCatName.textContent = product.category;
+    const related = window.PRIZM_PRODUCTS
+      .filter(p => p.category === product.category && p.id !== product.id)
+      .slice(0, 4);
+
+    renderProductsGrid(related, relatedGrid);
   }
 }
 
