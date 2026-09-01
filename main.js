@@ -4,7 +4,8 @@
 */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. INJECT REUSABLE MODALS INTO BODY
+  // 1. INJECT REUSABLE MODALS AND LOADING SCREEN INTO BODY
+  injectLoadingScreen();
   injectEnquiryModal();
   injectDetailModal();
 
@@ -131,6 +132,41 @@ function injectDetailModal() {
 }
 
 /* --- 2. LOADING SCREEN --- */
+function injectLoadingScreen() {
+  if (document.getElementById('loading-screen')) return;
+  const loaderHTML = `
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="loader-glowing-back"></div>
+        <div class="logo-wordmark logo-dark-bg" style="transform: scale(1.3); transform-origin: center; margin-bottom: 0.5rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.65rem;">
+          <img src="logo.png" alt="Prizm Lights Logo" class="logo-icon-img loader-logo-img">
+          <div class="logo-text-block">
+            <div class="logo-main-text" style="font-size: 2rem;">
+              <span class="char-pri animated-letter" style="animation-delay: 0.1s;">P</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.2s;">R</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.3s;">I</span>
+              <span class="char-sec animated-letter flicker-char" style="animation-delay: 0.4s;">Z</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.5s;">M</span>
+              <span class="logo-space"></span>
+              <span class="char-sec logo-l animated-letter flicker-char" style="animation-delay: 0.6s;">L</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.7s;">I</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.8s;">G</span>
+              <span class="char-pri animated-letter" style="animation-delay: 0.9s;">H</span>
+              <span class="char-pri animated-letter" style="animation-delay: 1.0s;">T</span>
+              <span class="char-pri animated-letter" style="animation-delay: 1.1s;">S</span>
+            </div>
+            <div class="logo-slogan loader-slogan-animate" style="font-size: 0.75rem; margin-top: 0.5rem; text-align: left; width: 100%;">Light makes Better Sight</div>
+          </div>
+        </div>
+        <div class="loader-bar-container">
+          <div class="loader-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', loaderHTML);
+}
+
 function initLoadingScreen() {
   const loader = document.getElementById('loading-screen');
   if (!loader) return;
