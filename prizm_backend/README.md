@@ -1,11 +1,10 @@
 # Prizm Lights Backend
 
-This is the backend foundation for the Prizm Lights premium catalog, built with Django, Django REST Framework, PostgreSQL, and Cloudinary.
+This is the backend foundation for the Prizm Lights premium catalog, built with Django, Django REST Framework, SQLite, and Cloudinary.
 
 ## Prerequisites
 
 - Python 3.10+
-- PostgreSQL
 - Cloudinary account
 
 ## Local Setup
@@ -30,11 +29,10 @@ This is the backend foundation for the Prizm Lights premium catalog, built with 
    ```
 
 4. **Environment Variables**
-   Copy the example environment file and fill in your actual credentials.
+   Copy the example environment file and fill in your Cloudinary credentials.
    ```bash
    cp .env.example .env
    ```
-   *Note: Make sure your PostgreSQL server is running and the database matches `DB_NAME` in your `.env`.*
 
 5. **Run Migrations**
    ```bash
