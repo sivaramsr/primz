@@ -15,8 +15,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   initContactForm();
 
   // Fetch products from API
+  const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:8000' 
+    : 'https://primz.pythonanywhere.com';
+
   try {
-    const res = await fetch('http://localhost:8000/api/products/');
+    const res = await fetch(`${API_BASE_URL}/api/products/`);
     if (res.ok) {
       const data = await res.json();
       

@@ -1,4 +1,7 @@
-const API_BASE = 'http://localhost:8000/api/staff';
+const API_HOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:8000' 
+    : 'https://primz.pythonanywhere.com';
+const API_BASE = `${API_HOST}/api/staff`;
 
 function showToast(msg) {
     const toast = document.getElementById("toast");
