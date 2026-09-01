@@ -761,16 +761,50 @@ function initProductDetail() {
     });
   }
 
-  // Populate Related Products in this Category
+  // Populate Related Products in this Category (Photo Grid matching Durga Furniture layout)
   const relatedCatName = document.getElementById('related-category-name');
   const relatedGrid = document.getElementById('related-products-grid');
   if (relatedGrid && window.PRIZM_PRODUCTS) {
     if (relatedCatName) relatedCatName.textContent = product.category;
+    
+    // Filter all other products in the exact same category
     const related = window.PRIZM_PRODUCTS
-      .filter(p => p.category === product.category && p.id !== product.id)
-      .slice(0, 4);
+      .filter(p => p.category === product.category && p.id !== product.id);
 
-    renderProductsGrid(related, relatedGrid);
+    relatedGrid.style.display = 'grid';
+    relatedGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(260px, 1fr))';
+    relatedGrid.style.gap = '1.5rem';
+    relatedGrid.style.marginTop = '1.5rem';
+
+    if (related.length === 0) {
+      relatedGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--secondary-text);">No other items in this category currently.</p>`;
+    } else {
+      relatedGrid.innerHTML = related.map(rel => `
+        <div class="related-photo-card" data-id="${rel.id}" style="cursor: pointer; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <img src="${rel.image}" alt="${rel.name}" loading="lazy" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform 0.4s ease;">
+        </div>
+      `).join('');
+
+      // Add click & hover listeners for Durga Furniture style photo cards
+      relatedGrid.querySelectorAll('.related-photo-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-id');
+          window.location.href = `product-detail.html?id=${id}`;
+        });
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-6px)';
+          card.style.boxShadow = '0 12px 30px rgba(0,0,0,0.12)';
+          const img = card.querySelector('img');
+          if (img) img.style.transform = 'scale(1.05)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)';
+          const img = card.querySelector('img');
+          if (img) img.style.transform = 'scale(1)';
+        });
+      });
+    }
   }
 }
 
