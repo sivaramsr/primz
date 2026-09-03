@@ -690,6 +690,8 @@ function initContactForm() {
 
 /* --- 8. STANDALONE PRODUCT DETAIL PAGE BINDING --- */
 function initProductDetail() {
+  if (!window.location.pathname.includes('product-detail.html')) return;
+
   const detailImg = document.getElementById('detail-product-img');
   const detailCat = document.getElementById('detail-product-category');
   const detailTitle = document.getElementById('detail-product-title');
@@ -703,8 +705,14 @@ function initProductDetail() {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
 
-  if (!productId || !window.PRIZM_PRODUCTS) {
+  if (!productId) {
     window.location.href = 'collections.html';
+    return;
+  }
+
+  if (!window.PRIZM_PRODUCTS || window.PRIZM_PRODUCTS.length === 0) {
+    // Retry shortly if API data is still populating
+    setTimeout(initProductDetail, 300);
     return;
   }
 
