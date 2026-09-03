@@ -4,6 +4,17 @@
 */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // Ensure user always starts session on Home Page (index.html)
+  const currentPath = window.location.pathname;
+  const isHomePage = currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.endsWith('/primz') || currentPath.endsWith('/primz/');
+
+  if (isHomePage) {
+    sessionStorage.setItem('prizm_home_visited', 'true');
+  } else if (currentPath.includes('collections.html') && !sessionStorage.getItem('prizm_home_visited') && !window.location.search) {
+    window.location.href = 'index.html';
+    return;
+  }
+
   // 1. INJECT REUSABLE MODALS AND LOADING SCREEN INTO BODY
   injectLoadingScreen();
   injectEnquiryModal();
